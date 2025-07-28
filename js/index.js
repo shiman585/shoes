@@ -235,3 +235,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // Default load
     showCategory('kids');
 // TOP PICK SECTION END
+
+
+
+// <!-- REEL VIDEO SECTION START-->
+ // JavaScript to ensure perfect seamless looping
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.querySelector('.marquee-track');
+            const content = track.innerHTML;
+            track.innerHTML = content + content; // Double the content for smoother looping
+        });
+// <!-- REEL VIDEO SECTION END -->

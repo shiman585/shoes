@@ -1238,4 +1238,116 @@ body {
         gap: 16px;
       }
     }
-/* TOP PICK SECYION END */
+/* TOP PICK SECTION END */
+
+
+
+
+/* REEL VIDEO SECTION START */
+.marquee-container {
+    background-color: #797575;
+    margin-top: 15px;
+    padding: 20px 0;
+    overflow: hidden;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.marquee-track {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll 12s linear infinite;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.marquee-content {
+    display: inline-block;
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    padding: 0 5px;
+}
+
+.marquee-content:after {
+    content: "";
+    margin: 0 15px;
+    color: white;
+}
+
+.marquee-content:last-child:after {
+    content: "";
+    margin: 0;
+}
+
+.video-row {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 25px 15px;
+    gap: 15px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: pointer;
+}
+
+.video-row::-webkit-scrollbar {
+    display: none;
+}
+
+.video-card {
+    flex: 0 0 auto;
+    width: 250px;
+    height: 450px;
+    background: white;
+    overflow: hidden;
+    position: relative;
+}
+
+.video-container {
+    width: 100%;
+    height: 100%;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Mobile responsive styles */
+@media only screen and (max-width: 768px) {
+    .video-card {
+        width: 180px;
+        height: 280px;
+    }
+    
+    .marquee-content {
+        font-size: 14px;
+    }
+    
+    .video-row {
+        padding: 15px 10px;
+        gap: 10px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .video-card {
+        width: 150px;
+        height: 230px;
+    }
+    
+    .marquee-content {
+        font-size: 12px;
+        padding: 0 3px;
+    }
+    
+    .marquee-content:after {
+        margin: 0 10px;
+    }
+}
+/* REEL VIDEO SECTION END */
