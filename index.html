@@ -5,404 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxury Shoes - Premium Footwear</title>
     <link rel="shortcut icon" href="IMAGES/LOGO.png" type="image/x-icon">
-    <style>
-        /* Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #f8f8f8;
-            color: black;
-            line-height: 1.6;
-            padding-top: 80px;
-            min-height: 200vh;
-        }
-        
-        /* NAVBAR START */
- /* Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background-color: #f8f8f8;
-    color: black;
-    line-height: 1.6;
-    padding-top: 80px;
-    min-height: 200vh;
-}
-
-/* NAVBAR START */
-/* Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background-color: #f8f8f8;
-    color: black;
-    line-height: 1.6;
-    padding-top: 80px;
-    min-height: 200vh;
-}
-
-/* NAVBAR START */
-.navbar {
-    background-color: black;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 5%;
-    height: 80px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-}
-
-.logo {
-    font-size: 28px;
-    font-weight: 700;
-    color: #fff;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    z-index: 1001;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-}
-
-.logo span {
-    color: red;
-    transition: all 0.3s ease;
-}
-
-.logo:hover span {
-    color: red;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links li {
-    position: relative;
-    padding: 0 15px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.nav-links li a {
-    color: #e0e0e0;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    height: 100%;
-    position: relative;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.nav-links li a:hover {
-    color: #ffffff;
-}
-
-.nav-links li a.active {
-    color: red;
-    font-weight: 600;
-}
-
-.nav-links li:hover::after,
-.nav-links li a.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: red;
-    animation: underline 0.3s ease;
-}
-
-@keyframes underline {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-/* Dropdown Styles */
-.dropdown {
-    position: relative;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: black;
-    min-width: 220px;
-    box-shadow: 0 8px 16px black;
-    z-index: 1;
-    border-radius: 0 0 8px 8px;
-    overflow: hidden;
-    animation: fadeIn 0.3s ease;
-    border-top: 2px solid red;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Desktop hover behavior */
-@media (min-width: 993px) {
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-    
-    .dropdown:hover .icon {
-        transform: rotate(180deg);
-    }
-}
-
-.dropdown-content li {
-    padding: 0;
-    height: auto;
-}
-
-.dropdown-content li a {
-    padding: 12px 20px;
-    width: 100%;
-    color: #d1d1d1;
-    border-left: 3px solid transparent;
-    transition: all 0.3s ease;
-    font-size: 15px;
-    height: auto;
-    justify-content: flex-start;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.dropdown-content li a:hover {
-    background-color: black;
-    color: white;
-    border-left: 3px solid red;
-    padding-left: 25px;
-}
-
-/* Icons */
-.icon {
-    margin-left: 8px;
-    font-size: 12px;
-    transition: transform 0.3s ease;
-}
-
-/* Action Buttons */
-.nav-actions {
-    display: flex;
-    align-items: center;
-    z-index: 1001;
-    gap: 15px;
-}
-
-.nav-actions a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    transition: all 0.3s ease;
-    position: relative;
-    -webkit-tap-highlight-color: transparent;
-    padding: 8px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.nav-actions a:hover {
-    color: red;
-    background-color: black;
-    transform: scale(1.1);
-}
-
-.cart-count {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    width: 18px;
-    height: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    font-weight: bold;
-}
-
-.cart-icon {
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-
-/* Mobile Menu Button */
-.menu-btn {
-    display: none;
-    cursor: pointer;
-    font-size: 24px;
-    color: white;
-    background: none;
-    border: none;
-    padding: 10px;
-    margin-left: 20px;
-    z-index: 1001;
-    transition: all 0.3s ease;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.menu-btn:hover {
-    color: red;
-}
-
-/* Responsive Styles - Enhanced Mobile Menu */
-@media (max-width: 992px) {
-    .navbar {
-        padding: 0 20px;
-    }
-    
-    .menu-btn {
-        display: block;
-    }
-    
-    .nav-links {
-        position: fixed;
-        top: 80px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 80px);
-        background-color: black;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 20px 0;
-        transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
-        overflow-y: auto;
-        backdrop-filter: blur(10px);
-    }
-    
-    .nav-links.active {
-        left: 0;
-    }
-    
-    .nav-links li {
-        width: 90%;
-        padding: 0;
-        height: auto;
-        text-align: center;
-        margin-bottom: 5px;
-        transition: all 0.3s ease;
-    }
-    
-    .nav-links li a {
-        padding: 15px 20px;
-        justify-content: space-between;
-        font-size: 18px;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-    }
-    
-    .nav-links li:hover::after {
-        display: none;
-    }
-    
-    .dropdown-content {
-        position: static;
-        display: none;
-        width: 90%;
-        margin: 5px auto;
-        background-color: black;
-        border-radius: 8px;
-        animation: none;
-        transition: all 0.3s ease;
-        max-height: 0;
-        overflow: hidden;
-        box-shadow: none;
-        border-top: none;
-    }
-    
-    .dropdown.active .dropdown-content {
-        display: block;
-        animation: slideDown 0.4s ease forwards;
-        max-height: 500px;
-    }
-    
-    .dropdown-content li a {
-        padding: 12px 20px;
-        font-size: 16px;
-        color: #e0e0e0;
-        border-left: 3px solid transparent;
-        transition: all 0.3s ease;
-    }
-    
-    .dropdown-content li a:hover {
-        background-color: black;
-        color: white;
-        border-left: 3px solid red;
-        padding-left: 25px;
-    }
-    
-    .dropdown .icon {
-        transform: rotate(0deg);
-    }
-    
-    .dropdown.active .icon {
-        transform: rotate(180deg);
-    }
-    
-    .nav-actions {
-        margin-left: auto;
-    }
-    
-    @keyframes slideDown {
-        from {
-            opacity: 0;
-            transform: translateY(-10px);
-            max-height: 0;
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-            max-height: 500px;
-        }
-    }
-}
-/* NAVBAR END */
-
-
-    </style>
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 <!-- NAVBAR START -->
@@ -410,8 +16,7 @@ body {
         <a href="#" class="logo">SHO<span>EVO</span></a>
         
         <ul class="nav-links" id="navLinks">
-            <li><a href="#">Home</a></li>
-            
+            <li><a href="#">Home</a></li>          
             <li class="dropdown">
                 <a href="#">Men <i class="fas fa-chevron-down icon"></i></a>
                 <ul class="dropdown-content">
@@ -435,12 +40,12 @@ body {
             </li>
             
             <li class="dropdown">
-                <a href="#">Accessories <i class="fas fa-chevron-down icon"></i></a>
+                <a href="#">Kids <i class="fas fa-chevron-down icon"></i></a>
                 <ul class="dropdown-content">
-                    <li><a href="#">Laces</a></li>
-                    <li><a href="#">Insoles</a></li>
-                    <li><a href="#">Heel grips</a></li>
-                    <li><a href="#">Shoe Trees</a></li>
+                    <li><a href="#">Sneakers</a></li>
+                    <li><a href="#">Sandals</a></li>
+                    <li><a href="#">Boots</a></li>
+                    <li><a href="#">Dress Shoes</a></li>
                 </ul>
             </li>
             
@@ -463,6 +68,200 @@ body {
     </nav>
 <!-- NAVBAR END -->
 
-<script src="index.js"></script>
+
+<!-- HERO SECTION START -->
+  <!-- Laptop View (1024px+) -->
+ <section class="hero">
+  <div class="hero-container">
+    <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+      <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">Premium Collection</p>
+      <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">Luxury <span>Shoes</span></h1>
+      <p class="hero-text" data-aos="fade-up" data-aos-delay="300">
+        Experience unparalleled comfort and style with our handcrafted luxury shoe collection.
+        Made with premium materials and exceptional attention to detail.
+      </p>
+      <div class="hero-buttons" data-aos="fade-up" data-aos-delay="400">
+        <a href="#" class="btn btn-primary" onclick="event.preventDefault()">Shop Now</a>
+        <a href="#" class="btn btn-secondary">View Collection</a>
+      </div>
+    </div>
+    <div class="hero-image" data-aos="zoom-in-left" data-aos-duration="1200">
+      <img src="IMAGES/herosec.png" alt="Luxury Shoes">
+      <div class="shadow"></div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Tablet View (486px-1023px) -->
+ <section  class="slider-section">
+  <div class="slider-container">
+    <div class="slider">
+      <div class="slide" data-aos="fade-up" data-aos-duration="800" data-aos-once="false">
+        <img src="IMAGES/banner 01.jpg" alt="Running Shoes">
+        <div class="slide-content">
+          <h3 class="slide-title">Performance Running</h3>
+          <p class="slide-text">Engineered for speed with responsive cushioning and breathable materials.</p>
+          <button class="slide-btn">Shop Now</button>
+        </div>
+      </div>
+      <div class="slide" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200" data-aos-once="false">
+        <img src="IMAGES/banner 02.jpg" alt="Casual Shoes">
+        <div class="slide-content">
+          <h3 class="slide-title">Casual Elegance</h3>
+          <p class="slide-text">Premium leather crafted for everyday comfort with timeless style.</p>
+          <button class="slide-btn">Explore Collection</button>
+        </div>
+      </div>
+      <div class="slide" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400" data-aos-once="false">
+        <img src="IMAGES/banner 03.jpg" alt="Basketball Shoes">
+        <div class="slide-content">
+          <h3 class="slide-title">Court Dominance</h3>
+          <p class="slide-text">High-performance basketball shoes with superior ankle support.</p>
+          <button class="slide-btn">View Details</button>
+        </div>
+      </div>
+    </div>
+    <div class="slider-arrow left"><i class="fas fa-chevron-left"></i></div>
+    <div class="slider-arrow right"><i class="fas fa-chevron-right"></i></div>
+    <div class="slider-nav">
+      <div class="slider-dot active"></div>
+      <div class="slider-dot"></div>
+      <div class="slider-dot"></div>
+    </div>
+  </div>
+</section>
+
+ <!-- Mobile View (0-485px) -->
+<section class="mobile-banner" data-aos="fade-up" data-aos-duration="800" data-aos-easing="ease-in-out" data-aos-once="false">
+  <div class="banner-content">
+    <p class="banner-subtitle" data-aos="fade-up" data-aos-delay="150" data-aos-duration="700" data-aos-once="false">Exclusive Mobile Offer</p>
+    <h1 class="banner-title" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800" data-aos-once="false">
+      Luxury <span>Redefined</span>
+    </h1>
+    <div class="divider-line" data-aos="fade-up" data-aos-delay="450" data-aos-duration="600" data-aos-once="false"></div>
+    <p class="banner-text" data-aos="fade-up" data-aos-delay="600" data-aos-duration="700" data-aos-once="false">
+      Enjoy 20% inaugural savings on our premium collection when you shop via mobile.
+    </p>
+    <a href="#" class="banner-btn" data-aos="fade-up" data-aos-delay="750" data-aos-duration="700" data-aos-once="false">
+      <span>Claim Your Offer</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+ <!-- HERO SECTION END -->
+
+
+   <!-- BEST SELLER SECTION START -->
+<div class="container">
+  <div class="section-header">
+    <h2>Best sellers</h2>
+    <a href="#" class="see-all">See All →</a>
+  </div>
+
+  <div class="grid">
+    <!-- Product 1 -->
+    <div data-aos="fade-up" data-aos-delay="0" data-aos-duration="700" data-aos-easing="ease-in-out" class="product">
+      <img src="IMAGES/download.jpg" alt="Urban Runner Sneakers">
+      <div class="product-info">
+        <h3>Urban Runner Sneakers</h3>
+        <p>$89</p>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="700" data-aos-easing="ease-in-out" class="product">
+      <img src="IMAGES/download.jpg" alt="Minimalist Slip-Ons">
+      <div class="product-info">
+        <h3>Minimalist Slip-Ons</h3>
+        <p>$69</p>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div data-aos="fade-up" data-aos-delay="200" data-aos-duration="700" data-aos-easing="ease-in-out" class="product">
+      <img src="IMAGES/download.jpg" alt="All-Terrain Trainers">
+      <div class="product-info">
+        <h3>All-Terrain Trainers</h3>
+        <p>$119</p>
+      </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div data-aos="fade-up" data-aos-delay="300" data-aos-duration="700" data-aos-easing="ease-in-out" class="product">
+      <img src="IMAGES/download.jpg" alt="Retro High Tops">
+      <div class="product-info">
+        <h3>Retro High Tops</h3>
+        <p>$99</p>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- BEST SELLER SECTION END -->
+
+
+
+  <!-- CATEGORY SECTION START -->
+    <div class="container">
+   <h2 class="section-title">
+  <span style="color: RED;">Explore</span> <span style="color: BLACK;">Categories</span>
+</h2>
+
+    <div  class="category-grid">
+      <div class="left category-item">
+        <video class="category-media" autoplay loop muted playsinline>
+          <source src="videos/mensec.mp4" type="video/mp4">
+        </video>
+        <div  class="overlay">
+          <h2  class="category-name">Men</h2>
+          <button class="shop-btn">Shop Now</button>
+        </div>
+      </div>
+      <div class="right">
+        <div class="category-item right-top">
+          <video class="category-media" autoplay loop muted playsinline>
+            <source src="videos/womensec.mp4" type="video/mp4">
+          </video>
+          <div class="overlay">
+            <h2 class="category-name">Women</h2>
+            <button class="shop-btn">Shop Now</button>
+          </div>
+        </div>
+        <div class="category-item right-bottom">
+          <video class="category-media" autoplay loop muted playsinline>
+            <source src="videos/kidsec.mp4" type="video/mp4">
+          </video>
+          <div class="overlay">
+            <h2 class="category-name">Kids</h2>
+            <button class="shop-btn">Shop Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   <!-- CATEGORY SECTION END -->
+
+
+
+
+   <!-- TOP PICK SECTION START -->
+    <div class="wrapper">
+    <h2>Top Picks</h2>
+    <div class="cat-btns">
+      <button id="menBtn" onclick="showCategory('men')">Shop Men's</button>
+      <button id="womenBtn" onclick="showCategory('women')">Shop Women's</button>
+      <button id="kidsBtn" onclick="showCategory('kids')" class="active">Shop Kids'</button>
+    </div>
+
+    <div class="items-grid" id="productGrid"></div>
+  </div>
+<!-- TOP PICK SECTION END -->
+   
+
+<script src="js/index.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
 </html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Shoes - Premium Footwear</title>
+    <link rel="shortcut icon" href="IMAGES/LOGO.png" type="image/x-icon">
+    <style>
+       
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: white;
+    color: black;
+    line-height: 1.6;
+    padding-top: 80px;
+    min-height: 200vh;
+}
+
+/* NAVBAR START */
+.navbar {
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    height: 80px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.logo span {
+    color: red;
+    transition: all 0.3s ease;
+}
+
+.logo:hover span {
+    color: red;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    position: relative;
+    padding: 0 15px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li a {
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+
+.nav-links li a.active {
+    color: red;
+    font-weight: 600;
+}
+
+.nav-links li:hover::after,
+.nav-links li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: red;
+    animation: underline 0.3s ease;
+}
+
+@keyframes underline {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* Dropdown Styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 220px;
+    box-shadow: 0 8px 16px black;
+    z-index: 1;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+    animation: fadeIn 0.3s ease;
+    border-top: 2px solid red;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Desktop hover behavior */
+@media (min-width: 993px) {
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    
+    .dropdown:hover .icon {
+        transform: rotate(180deg);
+    }
+}
+
+.dropdown-content li {
+    padding: 0;
+    height: auto;
+}
+
+.dropdown-content li a {
+    padding: 12px 20px;
+    width: 100%;
+    color: black;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    height: auto;
+    justify-content: flex-start;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.dropdown-content li a:hover {
+    background-color: white;
+    color: black;
+    border-left: 3px solid red;
+    padding-left: 25px;
+}
+
+/* Icons */
+.icon {
+    margin-left: 8px;
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+/* Action Buttons */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+    gap: 15px;
+}
+
+.nav-actions a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-actions a:hover {
+    color: red;
+    background-color: white;
+    transform: scale(1.1);
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.cart-icon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+/* Mobile Menu Button */
+.menu-btn {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: black;
+    background: none;
+    border: none;
+    padding: 10px;
+    margin-left: 20px;
+    z-index: 1001;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+
+/* Responsive Styles - Enhanced Mobile Menu */
+@media (max-width: 992px) {
+    .navbar {
+        padding: 0 20px;
+    }
+    
+    .menu-btn {
+        display: block;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 20px 0;
+        transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+        overflow-y: auto;
+        backdrop-filter: blur(10px);
+    }
+    
+    .nav-links.active {
+        left: 0;
+    }
+    
+    .nav-links li {
+        width: 90%;
+        padding: 0;
+        height: auto;
+        text-align: center;
+        margin-bottom: 5px;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-links li a {
+        padding: 15px 20px;
+        justify-content: space-between;
+        font-size: 18px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-links li:hover::after {
+        display: none;
+    }
+    
+    .dropdown-content {
+        position: static;
+        display: none;
+        width: 90%;
+        margin: 5px auto;
+        background-color: white;
+        border-radius: 8px;
+        animation: none;
+        transition: all 0.3s ease;
+        max-height: 0;
+        overflow: hidden;
+        box-shadow: none;
+        border-top: none;
+    }
+    
+    .dropdown.active .dropdown-content {
+        display: block;
+        animation: slideDown 0.4s ease forwards;
+        max-height: 500px;
+    }
+    
+    .dropdown-content li a {
+        padding: 12px 20px;
+        font-size: 16px;
+        color: black;
+        border-left: 3px solid transparent;
+        transition: all 0.3s ease;
+    }
+    
+    .dropdown-content li a:hover {
+        background-color: black;
+        color: white;
+        border-left: 3px solid red;
+        padding-left: 25px;
+    }
+    
+    .dropdown .icon {
+        transform: rotate(0deg);
+    }
+    
+    .dropdown.active .icon {
+        transform: rotate(180deg);
+    }
+    
+    .nav-actions {
+        margin-left: auto;
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+            max-height: 0;
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 500px;
+        }
+    }
+}
+/* NAVBAR END */
+
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- NAVBAR START -->
+    <nav class="navbar">
+        <a href="#" class="logo">SHO<span>EVO</span></a>
+        
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#">Home</a></li>
+            
+            <li class="dropdown">
+                <a href="#">Men <i class="fas fa-chevron-down icon"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="#">Sneakers</a></li>
+                    <li><a href="#">Loafers</a></li>
+                    <li><a href="#">Boots</a></li>
+                    <li><a href="#">Sandals</a></li>
+                    <li><a href="#">Formal Shoes</a></li>
+                </ul>
+            </li>
+            
+            <li class="dropdown">
+                <a href="#">Women <i class="fas fa-chevron-down icon"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="#">Heels</a></li>
+                    <li><a href="#">Flats</a></li>
+                    <li><a href="#">Boots</a></li>
+                    <li><a href="#">Sandals</a></li>
+                    <li><a href="#">Athletic</a></li>
+                </ul>
+            </li>
+            
+            <li class="dropdown">
+                <a href="#">Kids <i class="fas fa-chevron-down icon"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="#">Sneakers</a></li>
+                    <li><a href="#">Sandals</a></li>
+                    <li><a href="#">Boots</a></li>
+                    <li><a href="#">Dress Shoes</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="#">Sale</a></li>
+            <li><a href="#">New Arrivals</a></li>
+        </ul>
+        
+        <div class="nav-actions">
+            <a href="#"><i class="fas fa-search"></i></a>
+            <a href="#"><i class="fas fa-user"></i></a>
+            <a href="#" class="cart-icon">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">3</span>
+            </a>
+        </div>
+        
+        <button class="menu-btn" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+<!-- NAVBAR END -->
+
+
+<script src="js/navbar.js"></script>
+</body>
+</html>
