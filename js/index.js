@@ -189,53 +189,52 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-// TOP PICK SECTION START
+ // TOP PICK SECTION START
   const products = {
-      men: [
-        { name: "Nike Air Max", price: "£120" },
-        { name: "Adidas Run Falcon", price: "£95" },
-        { name: "Puma Classic", price: "£80" },
-        { name: "adidas Trefoil Tracksuit Children", price: "£35" }
-      ],
-      women: [
-        { name: "Reebok Classic", price: "£70" },
-        { name: "Puma Cali Bold", price: "£85" },
-        { name: "Adidas Originals", price: "£90" },
-        { name: "adidas Trefoil Tracksuit Children", price: "£35" }
-      ],
-      kids: [
-        { name: "Nike Dunk Low Children", price: "£60" },
-        { name: "adidas Originals Handball Spezial Junior", price: "£70" },
-        { name: "MONTIREX Girls’ Trail Box T-Shirt Junior", price: "£23" },
-        { name: "adidas Trefoil Tracksuit Children", price: "£35" }
-      ]
-    };
+    men: [
+      { name: "Nike Air Max", price: "£120", image: "MP/MP1.webp" },
+      { name: "Adidas Run Falcon", price: "£95", image: "MP/MP2.webp" },
+      { name: "Puma Classic", price: "£80", image: "MP/MP3.webp" },
+      { name: "adidas Trefoil Tracksuit Children", price: "£35", image: "MP/MP4.webp" }
+    ],
+    women: [
+      { name: "Reebok Classic", price: "£70", image: "WP/WP1.jpg" },
+      { name: "Puma Cali Bold", price: "£85", image: "WP/WP2.webp" },
+      { name: "Adidas Originals", price: "£90", image: "WP/WB3.webp" },
+      { name: "adidas Trefoil Tracksuit Children", price: "£35", image: "WP/WP4.webp" }
+    ],
+    kids: [
+      { name: "Nike Dunk Low Children", price: "£60", image: "BP/BP1.jpg" },
+      { name: "adidas Originals Handball Spezial Junior", price: "£70", image: "BP/BP2.jpg" },
+      { name: "MONTIREX Girls’ Trail Box T-Shirt Junior", price: "£23", image: "BP/BP3.jpg" },
+      { name: "adidas Trefoil Tracksuit Children", price: "£35", image: "BP/BP4.jpg" }
+    ]
+  };
 
-    const buttons = document.querySelectorAll(".cat-btns button");
-    const productGrid = document.getElementById("productGrid");
+  const buttons = document.querySelectorAll(".cat-btns button");
+  const productGrid = document.getElementById("productGrid");
 
-    function showCategory(category) {
-      // Update active button
-      buttons.forEach(btn => btn.classList.remove("active"));
-      document.getElementById(`${category}Btn`).classList.add("active");
+  function showCategory(category) {
+    // Update active button
+    buttons.forEach(btn => btn.classList.remove("active"));
+    document.getElementById(`${category}Btn`).classList.add("active");
 
-      // Render products
-      productGrid.innerHTML = "";
-      products[category].forEach(item => {
-        productGrid.innerHTML += `
-          <div class="item-card">
-            <img src="IMAGES/download.jpg" alt="${item.name}">
-            <div class="price">${item.price}</div>
-            <div class="title">${item.name}</div>
-          </div>
-        `;
-      });
-    }
+    // Render products
+    productGrid.innerHTML = "";
+    products[category].forEach(item => {
+      productGrid.innerHTML += `
+        <div class="item-card">
+          <img src="${item.image}" alt="${item.name}">
+          <div class="price">${item.price}</div>
+          <div class="title">${item.name}</div>
+        </div>
+      `;
+    });
+  }
 
-    // Default load
-    showCategory('kids');
-// TOP PICK SECTION END
-
+  // Default load
+  showCategory('kids');
+  // TOP PICK SECTION END
 
 
 // <!-- REEL VIDEO SECTION START-->

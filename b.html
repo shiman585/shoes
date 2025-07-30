@@ -1,189 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hush Puppies</title>
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHOEVO | Premium Streetwear & Lifestyle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Philosopher:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
-}
-
-.marquee-container {
-    background-color: #797575;
-    margin-top: 15px;
-    padding: 20px 0;
-    overflow: hidden;
-    border-bottom: 1px solid #d9d9d9;
-}
-
-.marquee-track {
-    display: inline-block;
-    white-space: nowrap;
-    animation: scroll 12s linear infinite;
-}
-
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-.marquee-content {
-    display: inline-block;
-    font-size: 16px;
-    color: white;
-    font-weight: 600;
-    padding: 0 5px;
-}
-
-.marquee-content:after {
-    content: "";
-    margin: 0 15px;
-    color: white;
-}
-
-.marquee-content:last-child:after {
-    content: "";
-    margin: 0;
-}
-
-.video-row {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding: 25px 15px;
-    gap: 15px;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    cursor: pointer;
-}
-
-.video-row::-webkit-scrollbar {
-    display: none;
-}
-
-.video-card {
-    flex: 0 0 auto;
-    width: 250px;
-    height: 380px;
-    background: white;
-    overflow: hidden;
-    position: relative;
-}
-
-.video-container {
-    width: 100%;
-    height: 100%;
-}
-
-.video-container video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* Mobile responsive styles */
-@media only screen and (max-width: 768px) {
-    .video-card {
-        width: 180px;
-        height: 280px;
+      font-family: 'Manrope', sans-serif;
+      color: #333333;
+      background-color: #ffffff;
+      line-height: 1.6;
     }
-    
-    .marquee-content {
-        font-size: 14px;
-    }
-    
-    .video-row {
-        padding: 15px 10px;
-        gap: 10px;
-    }
-}
 
-@media only screen and (max-width: 480px) {
-    .video-card {
-        width: 150px;
-        height: 230px;
+    .sho-hero-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem;
+      min-height: 100vh;
     }
-    
-    .marquee-content {
-        font-size: 12px;
-        padding: 0 3px;
+
+    .sho-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      width: 100%;
+      gap: 3rem;
     }
-    
-    .marquee-content:after {
-        margin: 0 10px;
+
+    .sho-visual-box {
+      position: relative;
+      width: 45%;
+      min-width: 300px;
+      height: 350px;
     }
-}
-    </style>
+
+    .sho-img-holder {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .sho-featured-img {
+      position: absolute;
+      width: 55%;
+      height: auto;
+      max-height: 70%;
+      object-fit: contain;
+      border: 1px solid #ffffff; /* Changed to white */
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .sho-img-primary {
+      bottom: 5%;
+      left: 5%;
+      z-index: 2;
+    }
+
+    .sho-img-secondary {
+      top: 5%;
+      right: 5%;
+      z-index: 1;
+    }
+
+    .sho-visual-box:hover .sho-img-primary {
+      transform: translate(-5px, 5px);
+    }
+
+    .sho-visual-box:hover .sho-img-secondary {
+      transform: translate(5px, -5px);
+    }
+
+    .sho-text-area {
+      width: 45%;
+      max-width: 500px;
+    }
+
+    .sho-brand-tag {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #d4a373;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 1rem;
+    }
+
+    .sho-main-heading {
+      font-family: 'Philosopher', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      color: #111111;
+    }
+
+    .sho-description-text {
+      font-size: 1rem;
+      color: #777777;
+      margin-bottom: 2rem;
+    }
+
+    .sho-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.8rem;
+      background-color: #111111;
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 2px solid #111111;
+      font-size: 0.9rem;
+    }
+
+    .sho-action-btn:hover {
+      background-color: transparent;
+      color: #111111;
+      transform: translateY(-2px);
+    }
+
+    .sho-action-btn svg {
+      width: 14px;
+      height: 14px;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .sho-action-btn:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .sho-container {
+        gap: 2rem;
+      }
+      
+      .sho-main-heading {
+        font-size: 2rem;
+      }
+      
+      .sho-visual-box {
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .sho-hero-section {
+        padding: 3rem 1.5rem;
+      }
+      
+      .sho-container {
+        flex-direction: column;
+      }
+      
+      .sho-visual-box, 
+      .sho-text-area {
+        width: 100%;
+        max-width: 100%;
+        min-width: auto;
+      }
+      
+      .sho-visual-box {
+        height: 250px;
+        margin-bottom: 2rem;
+      }
+      
+      .sho-text-area {
+        text-align: center;
+      }
+      
+      .sho-description-text {
+        margin: 0 auto 2rem;
+        max-width: 80%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sho-main-heading {
+        font-size: 1.8rem;
+      }
+      
+      .sho-brand-tag {
+        font-size: 0.8rem;
+      }
+      
+      .sho-action-btn {
+        padding: 0.7rem 1.5rem;
+      }
+      
+      .sho-visual-box {
+        height: 200px;
+      }
+      
+      .sho-description-text {
+        max-width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="marquee-container">
-        <div class="marquee-track">
-            <span class="marquee-content">BUY NOW PAY LATER</span>
-            <span class="marquee-content">FREE SHIPPING ON ALL PRE PAID ORDERS</span>
-            <span class="marquee-content">BUY NOW PAY LATER</span>
-            <span class="marquee-content">FREE SHIPPING ON ALL PRE PAID ORDERS</span>
-            <!-- Duplicate content for seamless looping -->
-            <span class="marquee-content">BUY NOW PAY LATER</span>
-            <span class="marquee-content">FREE SHIPPING ON ALL PRE PAID ORDERS</span>
-            <span class="marquee-content">BUY NOW PAY LATER</span>
-            <span class="marquee-content">FREE SHIPPING ON ALL PRE PAID ORDERS</span>
+  <section class="sho-hero-section">
+    <div class="sho-container">
+      <div class="sho-visual-box">
+        <div class="sho-img-holder">
+          <img src="IMAGES/DOBMEN.png" alt="Contemporary men's fashion" class="sho-featured-img sho-img-primary">
+          <img src="IMAGES/DOBMEN02.png" alt="Trendsetting women's streetwear" class="sho-featured-img sho-img-secondary">
         </div>
+      </div>
+      
+      <div class="sho-text-area">
+        <span class="sho-brand-tag">Discover Our Brand</span>
+        <h1 class="sho-main-heading">SHOEVO</h1>
+        <p class="sho-description-text">
+          Step into SHOVEO. The best of women's streetwear, fashion,
+          lifestyle, and a bold community built on shoes.
+        </p>
+        <a href="#" class="sho-action-btn">
+          Shop Now
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+      </div>
     </div>
-    
-    <div class="video-row">
-        <div class="video-card">
-            <div class="video-container">
-                <video autoplay loop muted playsinline>
-                    <source src="videos/womensec.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-        
-        <div class="video-card">
-            <div class="video-container">
-                <video autoplay loop muted playsinline>
-                    <source src="videos/mensec.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-        
-        <div class="video-card">
-            <div class="video-container">
-                <video autoplay loop muted playsinline>
-                    <source src="videos/kidsec.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-        
-        <div class="video-card">
-            <div class="video-container">
-                <video autoplay loop muted playsinline>
-                    <source src="videos/womensec.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-        
-        <div class="video-card">
-            <div class="video-container">
-                <video autoplay loop muted playsinline>
-                    <source src="videos/mensec.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // JavaScript to ensure perfect seamless looping
-        document.addEventListener('DOMContentLoaded', function() {
-            const track = document.querySelector('.marquee-track');
-            const content = track.innerHTML;
-            track.innerHTML = content + content; // Double the content for smoother looping
-        });
-    </script>
+  </section>
 </body>
 </html>
