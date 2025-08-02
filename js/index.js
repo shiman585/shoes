@@ -91,6 +91,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 // NAVBAR END
 
+
+
 // HERO SLIDER START
 document.addEventListener('DOMContentLoaded', function () {
   const slider = document.querySelector('.slider');
@@ -162,6 +164,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 // HERO SLIDER END
 
+
+
+// AOS ANIMATION START
 // GLOBAL ENHANCEMENTS
 document.addEventListener('DOMContentLoaded', function () {
   // AOS init
@@ -185,56 +190,66 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
-
+// AOS ANIMATION END
 
 
 
  // TOP PICK SECTION START
   const products = {
-    men: [
-      { name: "Nike Air Max", price: "£120", image: "MP/MP1.webp" },
-      { name: "Adidas Run Falcon", price: "£95", image: "MP/MP2.webp" },
-      { name: "Puma Classic", price: "£80", image: "MP/MP3.webp" },
-      { name: "adidas Trefoil Tracksuit Children", price: "£35", image: "MP/MP4.webp" }
-    ],
-    women: [
-      { name: "Reebok Classic", price: "£70", image: "WP/WP1.jpg" },
-      { name: "Puma Cali Bold", price: "£85", image: "WP/WP2.webp" },
-      { name: "Adidas Originals", price: "£90", image: "WP/WB3.webp" },
-      { name: "adidas Trefoil Tracksuit Children", price: "£35", image: "WP/WP4.webp" }
-    ],
-    kids: [
-      { name: "Nike Dunk Low Children", price: "£60", image: "BP/BP1.jpg" },
-      { name: "adidas Originals Handball Spezial Junior", price: "£70", image: "BP/BP2.jpg" },
-      { name: "MONTIREX Girls’ Trail Box T-Shirt Junior", price: "£23", image: "BP/BP3.jpg" },
-      { name: "adidas Trefoil Tracksuit Children", price: "£35", image: "BP/BP4.jpg" }
-    ]
-  };
+      men: [
+        { name: "Nike Air Max", price: "£120", image: "PRODUCTS/MP/MP1.webp" },
+        { name: "Adidas Run Falcon", price: "£95", image: "PRODUCTS/MP/MP2.webp" },
+        { name: "Puma Classic", price: "£80", image: "PRODUCTS/MP/MP3.webp" },
+        { name: "adidas Trefoil Tracksuit Children", price: "£35", image: "PRODUCTS/MP/MP4.webp" }
+      ],
+      women: [
+        { name: "Reebok Classic", price: "£70", image: "PRODUCTS/WP/WP1.jpg" },
+        { name: "Puma Cali Bold", price: "£85", image: "PRODUCTS/WP/WP2.webp" },
+        { name: "Adidas Originals", price: "£90", image: "PRODUCTS/WP/WB3.webp" },
+        { name: "adidas Trefoil Tracksuit Children", price: "£35", image: "PRODUCTS/WP/WP4.webp" }
+      ],
+      kids: [
+        { name: "Nike Dunk Low Children", price: "£60", image: "PRODUCTS/BP/BP1.jpg" },
+        { name: "adidas Originals Handball Spezial Junior", price: "£70", image: "PRODUCTS/BP/BP2.jpg" },
+        { name: "MONTIREX Girls’ Trail Box T-Shirt Junior", price: "£23", image: "PRODUCTS/BP/BP3.jpg" },
+        { name: "adidas Trefoil Tracksuit Children", price: "£35", image: "PRODUCTS/BP/BP4.jpg" }
+      ]
+    };
 
-  const buttons = document.querySelectorAll(".cat-btns button");
-  const productGrid = document.getElementById("productGrid");
+    const buttons = document.querySelectorAll(".cat-btns button");
+    const productGrid = document.getElementById("productGrid");
 
-  function showCategory(category) {
-    // Update active button
-    buttons.forEach(btn => btn.classList.remove("active"));
-    document.getElementById(`${category}Btn`).classList.add("active");
+    function showCategory(category) {
+      // Update active button
+      buttons.forEach(btn => btn.classList.remove("active"));
+      document.getElementById(`${category}Btn`).classList.add("active");
 
-    // Render products
-    productGrid.innerHTML = "";
-    products[category].forEach(item => {
-      productGrid.innerHTML += `
-        <div class="item-card">
-          <img src="${item.image}" alt="${item.name}">
-          <div class="price">${item.price}</div>
-          <div class="title">${item.name}</div>
-        </div>
-      `;
-    });
-  }
+      // Fade-out animation (optional)
+      productGrid.innerHTML = "";
 
-  // Default load
-  showCategory('kids');
+      products[category].forEach((item, i) => {
+        const card = document.createElement("div");
+        card.className = "item-card";
+       card.innerHTML = `
+  <img src="${item.image}" alt="${item.name}">
+  <div class="price">${item.price}</div>
+  <div class="title">${item.name}</div>
+  <button class="add-to-cart-btn">
+    <i class="fas fa-shopping-cart"></i> Add to Cart
+  </button>
+`;
+
+        productGrid.appendChild(card);
+
+        // Smooth fade-in
+        setTimeout(() => card.classList.add("loaded"), 50 * i);
+      });
+    }
+
+    // Default load
+    showCategory('kids');
   // TOP PICK SECTION END
+
 
 
 // <!-- REEL VIDEO SECTION START-->
@@ -245,3 +260,29 @@ document.addEventListener('DOMContentLoaded', function () {
             track.innerHTML = content + content; // Double the content for smoother looping
         });
 // <!-- REEL VIDEO SECTION END -->
+
+
+
+// FOOTER SECTION START
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Newsletter form submission
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const emailInput = this.querySelector('input[type="email"]');
+            // Here you would typically send the email to your server
+            alert('Thank you for subscribing!');
+            emailInput.value = '';
+        });
+    }
+    // FOOTER SECTION END

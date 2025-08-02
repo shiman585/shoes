@@ -1,242 +1,2176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SHOEVO | Premium Streetwear & Lifestyle</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Philosopher:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOEVO - Men's Footwear Collection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="IMAGES/LOGO.png" type="image/x-icon">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #e63946;
+            --secondary-color: #1d3557;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --gray-color: #6c757d;
+            --light-gray: #e9ecef;
+        }
 
-    body {
-      font-family: 'Manrope', sans-serif;
-      color: #333333;
-      background-color: #ffffff;
-      line-height: 1.6;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    .sho-hero-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4rem 2rem;
-      min-height: 100vh;
-    }
+        body {
+            background-color: #fff;
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+        
+        /* NAVBAR START */
+        .navbar {
+            background-color: white;
+            color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            height: 80px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
 
-    .sho-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1200px;
-      width: 100%;
-      gap: 3rem;
-    }
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: black;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            z-index: 1001;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
 
-    .sho-visual-box {
-      position: relative;
-      width: 45%;
-      min-width: 300px;
-      height: 350px;
-    }
+        .logo span {
+            color: red;
+            transition: all 0.3s ease;
+        }
 
-    .sho-img-holder {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
+        .logo:hover span {
+            color: red;
+        }
 
-    .sho-featured-img {
-      position: absolute;
-      width: 55%;
-      height: auto;
-      max-height: 70%;
-      object-fit: contain;
-      border: 1px solid #ffffff; /* Changed to white */
-      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
 
-    .sho-img-primary {
-      bottom: 5%;
-      left: 5%;
-      z-index: 2;
-    }
+        .nav-links li {
+            position: relative;
+            padding: 0 15px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
 
-    .sho-img-secondary {
-      top: 5%;
-      right: 5%;
-      z-index: 1;
-    }
+        .nav-links li a {
+            color: black;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-    .sho-visual-box:hover .sho-img-primary {
-      transform: translate(-5px, 5px);
-    }
+        .nav-links li a.active {
+            color: red;
+            font-weight: 600;
+        }
 
-    .sho-visual-box:hover .sho-img-secondary {
-      transform: translate(5px, -5px);
-    }
+        .nav-links li:hover::after,
+        .nav-links li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: red;
+            animation: underline 0.3s ease;
+        }
 
-    .sho-text-area {
-      width: 45%;
-      max-width: 500px;
-    }
+        @keyframes underline {
+            from { width: 0; }
+            to { width: 100%; }
+        }
 
-    .sho-brand-tag {
-      display: block;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #d4a373;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 1rem;
-    }
+        .dropdown {
+            position: relative;
+        }
 
-    .sho-main-heading {
-      font-family: 'Philosopher', serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 1.2rem;
-      color: #111111;
-    }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: 0 8px 16px black;
+            z-index: 1;
+            border-radius: 0 0 8px 8px;
+            overflow: hidden;
+            animation: fadeIn 0.3s ease;
+            border-top: 2px solid red;
+        }
 
-    .sho-description-text {
-      font-size: 1rem;
-      color: #777777;
-      margin-bottom: 2rem;
-    }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .sho-action-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.8rem 1.8rem;
-      background-color: #111111;
-      color: white;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: 50px;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      border: 2px solid #111111;
-      font-size: 0.9rem;
-    }
+        @media (min-width: 993px) {
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
 
-    .sho-action-btn:hover {
-      background-color: transparent;
-      color: #111111;
-      transform: translateY(-2px);
-    }
+            .dropdown:hover .icon {
+                transform: rotate(180deg);
+            }
+        }
 
-    .sho-action-btn svg {
-      width: 14px;
-      height: 14px;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+        .dropdown-content li {
+            padding: 0;
+            height: auto;
+        }
 
-    .sho-action-btn:hover svg {
-      transform: translateX(3px);
-    }
+        .dropdown-content li a {
+            padding: 12px 20px;
+            width: 100%;
+            color: black;
+            transition: all 0.3s ease;
+            font-size: 15px;
+            height: auto;
+            justify-content: flex-start;
+            -webkit-tap-highlight-color: transparent;
+            border-left: none !important;
+        }
 
-    /* Responsive Styles */
-    @media (max-width: 992px) {
-      .sho-container {
-        gap: 2rem;
-      }
+        .dropdown-content li a:hover {
+            background-color: white;
+            color: black;
+            padding-left: 25px;
+            border-left: none !important;
+        }
+
+        .icon {
+            margin-left: 8px;
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            z-index: 1001;
+            gap: 15px;
+        }
+
+        .nav-actions a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+            padding: 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-actions a:hover {
+            color: red;
+            background-color: white;
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .cart-icon {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu-btn {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: black;
+            background: none;
+            border: none;
+            padding: 10px;
+            margin-left: 20px;
+            z-index: 1001;
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        @media (max-width: 992px) {
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 20px 0;
+                transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+                overflow-y: auto;
+                backdrop-filter: blur(10px);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                width: 90%;
+                padding: 0;
+                height: auto;
+                text-align: center;
+                margin-bottom: 5px;
+                transition: all 0.3s ease;
+            }
+
+            .nav-links li a {
+                padding: 15px 20px;
+                justify-content: space-between;
+                font-size: 18px;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+            }
+
+            .nav-links li:hover::after {
+                display: none;
+            }
+
+            .dropdown-content {
+                position: static;
+                display: none;
+                width: 90%;
+                margin: 5px auto;
+                background-color: white;
+                border-radius: 8px;
+                animation: none;
+                transition: all 0.3s ease;
+                max-height: 0;
+                overflow: hidden;
+                box-shadow: none;
+                border-top: none;
+            }
+
+            .dropdown.active .dropdown-content {
+                display: block;
+                animation: slideDown 0.4s ease forwards;
+                max-height: 500px;
+            }
+
+            .dropdown-content li a {
+                padding: 12px 20px;
+                font-size: 16px;
+                color: black;
+                border-left: none !important;
+                transition: all 0.3s ease;
+            }
+
+            .dropdown-content li a:hover {
+                background-color: white;
+                color: black;
+                padding-left: 25px;
+                border-left: none !important;
+            }
+
+            .dropdown .icon {
+                transform: rotate(0deg);
+            }
+
+            .dropdown.active .icon {
+                transform: rotate(180deg);
+            }
+
+            .nav-actions {
+                margin-left: auto;
+            }
+
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                    max-height: 0;
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                    max-height: 500px;
+                }
+            }
+        }
+        /* NAVBAR END */
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Main Content */
+        .page-header {
+            text-align: center;
+            padding: 150px 0 30px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            display: flex;
+            gap: 30px;
+            padding: 30px 0;
+        }
+
+        /* Enhanced Filter Section - Now on Left Side */
+        .filter-section {
+            flex: 0 0 280px;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .filter-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .filter-group {
+            margin-bottom: 15px;
+        }
+
+        .filter-group h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: var(--secondary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .filter-group h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .category-select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--light-gray);
+            border-radius: 6px;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .category-select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        /* Updated Price Range Filter */
+        .price-filter {
+            width: 100%;
+        }
+
+        .price-inputs {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .price-input {
+            flex: 1;
+        }
+
+        .price-input label {
+            display: block;
+            font-size: 12px;
+            color: var(--gray-color);
+            margin-bottom: 5px;
+        }
+
+        .price-input input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .price-input input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        /* Product Grid Section */
+        .product-section {
+            flex: 1;
+        }
+
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        /* Updated Product Grid Styles - 3 columns */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            padding: 5px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-info {
+            padding: 12px 16px 16px;
+            text-align: left;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-info h3 {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #111;
+        }
+
+        .product-info p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .add-to-cart {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #111, #333);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid #444;
+            border-radius: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 1;
+            white-space: nowrap;
+            max-width: 90%;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .product-card:hover .add-to-cart {
+            opacity: 1;
+            pointer-events: auto;
+            bottom: 24px;
+        }
+
+        .add-to-cart:hover {
+            background: linear-gradient(135deg, #222, #000);
+            transform: translateX(-50%) scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
       
-      .sho-main-heading {
-        font-size: 2rem;
-      }
-      
-      .sho-visual-box {
-        height: 300px;
-      }
-    }
+        
+        .current-price {
+            font-weight: bold;
+            color: #111;
+        }
+        
+        
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+        }
+        
+        
+        .product-category {
+            font-size: 12px;
+            color: #666;
+            background-color: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
 
-    @media (max-width: 768px) {
-      .sho-hero-section {
-        padding: 3rem 1.5rem;
-      }
-      
-      .sho-container {
-        flex-direction: column;
-      }
-      
-      .sho-visual-box, 
-      .sho-text-area {
-        width: 100%;
-        max-width: 100%;
-        min-width: auto;
-      }
-      
-      .sho-visual-box {
-        height: 250px;
-        margin-bottom: 2rem;
-      }
-      
-      .sho-text-area {
-        text-align: center;
-      }
-      
-      .sho-description-text {
-        margin: 0 auto 2rem;
-        max-width: 80%;
-      }
-    }
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .main-content {
+                flex-direction: column;
+            }
 
-    @media (max-width: 480px) {
-      .sho-main-heading {
-        font-size: 1.8rem;
-      }
-      
-      .sho-brand-tag {
-        font-size: 0.8rem;
-      }
-      
-      .sho-action-btn {
-        padding: 0.7rem 1.5rem;
-      }
-      
-      .sho-visual-box {
-        height: 200px;
-      }
-      
-      .sho-description-text {
-        max-width: 100%;
-      }
-    }
-  </style>
+            .filter-section {
+                position: static;
+                width: 100%;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* FOOTER SECTION START */
+        main {
+            flex: 1;
+        }
+
+        /* FOOTER STYLES - Enhanced Professional Version */
+        .site-footer {
+            background-color: #fff;
+            color: #333;
+            padding: 50px 0 0;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
+            font-family: 'Poppins', sans-serif;
+            margin-top: auto;
+            position: relative;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Footer Top Section */
+        .footer-top {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-brand {
+            flex: 1 1 300px;
+        }
+
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #000;
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-logo:hover {
+            opacity: 0.9;
+        }
+
+        .footer-logo span {
+            color: red;
+        }
+
+        .footer-tagline {
+            margin: 15px 0 20px;
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+            max-width: 300px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background-color: #f8f9fa;
+            color: #333;
+            border-radius: 50%;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background-color: red;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-links {
+            flex: 2 1 700px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .links-column {
+            margin-bottom: 15px;
+        }
+
+        .links-column h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: #222;
+        }
+
+        .links-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: red;
+            transition: width 0.3s ease;
+        }
+
+        .links-column:hover h3::after {
+            width: 60px;
+        }
+
+        .links-column ul {
+            list-style: none;
+        }
+
+        .links-column li {
+            margin-bottom: 12px;
+        }
+
+        .links-column a {
+            color: #555;
+            text-decoration: none;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+        }
+
+        .links-column a:hover {
+            color: red;
+            transform: translateX(5px);
+        }
+
+        .links-column p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 15px;
+        }
+
+        .newsletter-form input {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            outline: none;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form input:focus {
+            border-color: red;
+            box-shadow: 0 0 0 2px rgba(230, 57, 70, 0.2);
+        }
+
+        .newsletter-form button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #c1121f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer Bottom Section */
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 15px;
+            font-size: 24px;
+            color: #666;
+            flex-wrap: wrap;
+        }
+
+        .payment-methods i {
+            transition: all 0.3s ease;
+        }
+
+        .payment-methods i:hover {
+            color: red;
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            color: #777;
+            font-size: 14px;
+            text-align: right;
+            flex: 1;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .footer-links {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            
+            .footer-brand {
+                flex: 1 1 100%;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            
+            .footer-tagline {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .payment-methods {
+                justify-content: center;
+            }
+            
+            .copyright {
+                text-align: center;
+                order: 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .site-footer {
+                padding: 40px 0 0;
+            }
+            
+            .footer-top {
+                padding-bottom: 30px;
+            }
+            
+            .newsletter-form {
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-links {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .links-column {
+                text-align: center;
+            }
+            
+            .links-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .footer-logo {
+                font-size: 26px;
+            }
+            
+            .payment-methods {
+                font-size: 20px;
+                gap: 12px;
+            }
+            
+            .copyright {
+                font-size: 13px;
+            }
+        }
+        /* FOOTER SECTION END */
+
+        /* Add to cart notification */
+        .add-to-cart-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4caf50;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .add-to-cart-notification.show {
+            opacity: 1;
+        }
+        
+        .add-to-cart-notification i {
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
-  <section class="sho-hero-section">
-    <div class="sho-container">
-      <div class="sho-visual-box">
-        <div class="sho-img-holder">
-          <img src="IMAGES/DOBMEN.png" alt="Contemporary men's fashion" class="sho-featured-img sho-img-primary">
-          <img src="IMAGES/DOBMEN02.png" alt="Trendsetting women's streetwear" class="sho-featured-img sho-img-secondary">
+<!-- NAVBAR START -->
+    <nav class="navbar">
+        <a href="#" class="logo">SHO<span>EVO</span></a>
+        
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#">Home</a></li>          
+            <li class="dropdown">
+                <a href="#">Men <i class="fas fa-chevron-down icon"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="#">Sneakers</a></li>
+                    <li><a href="#">Loafers</a></li>
+                    <li><a href="#">Boots</a></li>
+                    <li><a href="#">Sandals</a></li>
+                    <li><a href="#">Formal Shoes</a></li>
+                </ul>
+            </li>
+            
+            <li class="dropdown">
+                <a href="#">Women <i class="fas fa-chevron-down icon"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="#">Heels</a></li>
+                    <li><a href="#">Flats</a></li>
+                    <li><a href="#">Boots</a></li>
+                    <li><a href="#">Sandals</a></li>
+                    <li><a href="#">Athletic</a></li>
+                </ul>
+            </li>
+            
+            <li class="dropdown">
+                <a href="#">Kids <i class="fas fa-chevron-down icon"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="#">Sneakers</a></li>
+                    <li><a href="#">Sandals</a></li>
+                    <li><a href="#">Boots</a></li>
+                    <li><a href="#">Dress Shoes</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="#">Sale</a></li>
+            <li><a href="#">New Arrivals</a></li>
+        </ul>
+        
+        <div class="nav-actions">
+            <a href="#"><i class="fas fa-search"></i></a>
+            <a href="#"><i class="fas fa-user"></i></a>
+            <a href="" class="cart-icon">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">3</span>
+            </a>
         </div>
-      </div>
-      
-      <div class="sho-text-area">
-        <span class="sho-brand-tag">Discover Our Brand</span>
-        <h1 class="sho-main-heading">SHOEVO</h1>
-        <p class="sho-description-text">
-          Step into SHOVEO. The best of women's streetwear, fashion,
-          lifestyle, and a bold community built on shoes.
-        </p>
-        <a href="#" class="sho-action-btn">
-          Shop Now
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-          </svg>
-        </a>
-      </div>
+        
+        <button class="menu-btn" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+<!-- NAVBAR END -->
+                
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Men's Footwear Collection</h1>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container main-content">
+        <!-- Enhanced Filter Section - Now on Left Side -->
+        <aside class="filter-section">
+            <div class="filter-container">
+                <div class="filter-group">
+                    <h3>Search Products</h3>
+                    <input type="text" id="searchInputMain" placeholder="Type product name..." class="category-select">
+                </div>
+                
+                <div class="filter-group">
+                    <h3>Categories</h3>
+                    <select id="categoryFilter" class="category-select">
+                        <option value="all">All Categories</option>
+                        <option value="sneakers">Sneakers</option>
+                        <option value="loafers">Loafers</option>
+                        <option value="boots">Boots</option>
+                        <option value="sandals">Sandals</option>
+                        <option value="formal">Formal Shoes</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <h3>Price Range</h3>
+                    <div class="price-filter">
+                        <div class="price-inputs">
+                            <div class="price-input">
+                                <label>From ($)</label>
+                                <input type="number" id="priceFrom" placeholder="0" min="0" max="500">
+                            </div>
+                            <div class="price-input">
+                                <label>To ($)</label>
+                                <input type="number" id="priceTo" placeholder="500" min="0" max="500">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Product Grid Section -->
+        <section class="product-section">
+            <section>
+                <h2 class="section-title">Sneakers</h2>
+                <div class="product-grid" id="sneakers">
+                    <!-- Product 1 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Urban Runner Sneakers">
+                        <div class="product-info">
+                            <h3>Urban Runner Sneakers</h3>
+                            <div class="price-section">
+                                <span class="current-price">$89</span>
+                            </div>
+                            <div class="product-meta">
+                                <div class="rating">
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="1">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="All-Terrain Trainers">
+                        <div class="product-info">
+                            <h3>All-Terrain Trainers</h3>
+                            <div class="price-section">
+                                <span class="current-price">$119</span>
+                            </div>
+                            <div class="product-meta">
+                                <div class="rating">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="2">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Retro High Tops">
+                        <div class="product-info">
+                            <h3>Retro High Tops</h3>
+                            <div class="price-section">
+                                <span class="current-price">$99</span>
+                            </div>
+                            <div class="product-meta">
+                                <div class="rating">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="3">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Air Max Running Shoes">
+                        <div class="product-info">
+                            <h3>Air Max Running Shoes</h3>
+                            <div class="price-section">
+                                <span class="current-price">$149</span>
+                            </div>
+                            <div class="product-meta">
+                                <div class="rating">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="4">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 5 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Canvas Low Tops">
+                        <div class="product-info">
+                            <h3>Canvas Low Tops</h3>
+                            <div class="price-section">
+                                <span class="current-price">$59</span>
+                            </div>
+                            <div class="product-meta">      
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="5">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 6 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Performance Running">
+                        <div class="product-info">
+                            <h3>Performance Running</h3>
+                            <div class="price-section">
+                                <span class="current-price">$129</span>
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="6">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 7 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Street Style Sneakers">
+                        <div class="product-info">
+                            <h3>Street Style Sneakers</h3>
+                            <div class="price-section">
+                                <span class="current-price">$79</span>
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="7">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 8 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Classic White Sneakers">
+                        <div class="product-info">
+                            <h3>Classic White Sneakers</h3>
+                            <div class="price-section">
+                                <span class="current-price">$89</span>
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="8">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 9 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1463100099107-aa0980c362e6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Tech Running Shoes">
+                        <div class="product-info">
+                            <h3>Tech Running Shoes</h3>
+                            <div class="price-section">
+                                <span class="current-price">$139</span>
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="9">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 10 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Skateboard Sneakers">
+                        <div class="product-info">
+                            <h3>Skateboard Sneakers</h3>
+                            <div class="price-section">
+                                <span class="current-price">$69</span>
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="10">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Loafers</h2>
+                <div class="product-grid" id="loafers">
+                    <!-- Product 1 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Classic Leather Loafers">
+                        <div class="product-info">
+                            <h3>Classic Leather Loafers</h3>
+                            <div class="price-section">
+                                <span class="current-price">$129</span>
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="11">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Minimalist Slip-Ons">
+                        <div class="product-info">
+                            <h3>Minimalist Slip-Ons</h3>
+                            <div class="price-section">
+                                <span class="current-price">$69</span>
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="12">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Tassel Leather Loafers">
+                        <div class="product-info">
+                            <h3>Tassel Leather Loafers</h3>
+                            <div class="price-section">
+                                <span class="current-price">$159</span>
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="13">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Penny Loafers">
+                        <div class="product-info">
+                            <h3>Penny Loafers</h3>
+                            <div class="price-section">
+                                <span class="current-price">$139</span>
+                            </div>
+                            <div class="product-meta">
+                        
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="14">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 5 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1463100099107-aa0980c362e6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Driving Loafers">
+                        <div class="product-info">
+                            <h3>Driving Loafers</h3>
+                            <div class="price-section">
+                                <span class="current-price">$89</span>
+                            </div>
+                            <div class="product-meta">
+                           
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="15">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 6 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Casual Slip-Ons">
+                        <div class="product-info">
+                            <h3>Casual Slip-Ons</h3>
+                            <div class="price-section">
+                                <span class="current-price">$59</span>
+                            </div>
+                            <div class="product-meta">
+                           
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="16">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 7 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Leather Bit Loafers">
+                        <div class="product-info">
+                            <h3>Leather Bit Loafers</h3>
+                            <div class="price-section">
+                                <span class="current-price">$179</span>
+                            </div>
+                            <div class="product-meta">
+                
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="17">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 8 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Horsebit Loafers">
+                        <div class="product-info">
+                            <h3>Horsebit Loafers</h3>
+                            <div class="price-section">
+                                <span class="current-price">$199</span>
+                            </div>
+                            <div class="product-meta">
+                
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="18">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 9 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Casual Penny Loafers">
+                        <div class="product-info">
+                            <h3>Casual Penny Loafers</h3>
+                            <div class="price-section">
+                                <span class="original-price">$129</span>
+                                <span class="current-price">$99</span>
+                            </div>
+                            <div class="product-meta">
+                           
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="19">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 10 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Classic Venetian Loafers">
+                        <div class="product-info">
+                            <h3>Classic Venetian Loafers</h3>
+                            <div class="price-section">
+                                <span class="current-price">$149</span>
+                            </div>
+                            <div class="product-meta">
+                        
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="20">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Boots</h2>
+                <div class="product-grid" id="boots">
+                    <!-- Product 1 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1611791484670-ce19b801d192?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Leather Chelsea Boots">
+                        <div class="product-info">
+                            <h3>Leather Chelsea Boots</h3>
+                            <div class="price-section">
+                                <span class="current-price">$199</span>
+                            </div>
+                            <div class="product-meta">
+                
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="21">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Work Boots">
+                        <div class="product-info">
+                            <h3>Work Boots</h3>
+                            <div class="price-section">
+                                <span class="current-price">$149</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="22">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Chukka Boots">
+                        <div class="product-info">
+                            <h3>Chukka Boots</h3>
+                            <div class="price-section">
+                                <span class="current-price">$179</span>
+                            </div>
+                            <div class="product-meta">
+                        
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="23">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1463100099107-aa0980c362e6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Combat Boots">
+                        <div class="product-info">
+                            <h3>Combat Boots</h3>
+                            <div class="price-section">
+                                <span class="current-price">$159</span>
+                            </div>
+                            <div class="product-meta">
+                        
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="24">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 5 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Hiking Boots">
+                        <div class="product-info">
+                            <h3>Hiking Boots</h3>
+                            <div class="price-section">
+                                <span class="current-price">$189</span>
+                            </div>
+                            <div class="product-meta">
+                
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="25">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 6 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Desert Boots">
+                        <div class="product-info">
+                            <h3>Desert Boots</h3>
+                            <div class="price-section">
+                                <span class="current-price">$129</span>
+                            </div>
+                            <div class="product-meta">
+                           
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="26">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 7 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Winter Snow Boots">
+                        <div class="product-info">
+                            <h3>Winter Snow Boots</h3>
+                            <div class="price-section">
+                                <span class="current-price">$169</span>
+                            </div>
+                            <div class="product-meta">
+                        
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="27">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 8 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Casual Chelsea Boots">
+                        <div class="product-info">
+                            <h3>Casual Chelsea Boots</h3>
+                            <div class="price-section">
+                                <span class="current-price">$139</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="28">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 9 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Leather Work Boots">
+                        <div class="product-info">
+                            <h3>Leather Work Boots</h3>
+                            <div class="price-section">
+                                <span class="current-price">$179</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="29">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 10 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Military Style Boots">
+                        <div class="product-info">
+                            <h3>Military Style Boots</h3>
+                            <div class="price-section">
+                                <span class="current-price">$149</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="30">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Sandals</h2>
+                <div class="product-grid" id="sandals">
+                    <!-- Product 1 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1562273138-f46be4ebdf33?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Leather Sandals">
+                        <div class="product-info">
+                            <h3>Leather Sandals</h3>
+                            <div class="price-section">
+                                <span class="current-price">$79</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="31">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Sport Sandals">
+                        <div class="product-info">
+                            <h3>Sport Sandals</h3>
+                            <div class="price-section">
+                                <span class="current-price">$59</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="32">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1463100099107-aa0980c362e6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Slide Sandals">
+                        <div class="product-info">
+                            <h3>Slide Sandals</h3>
+                            <div class="price-section">
+                                <span class="current-price">$49</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="33">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Fisherman Sandals">
+                        <div class="product-info">
+                            <h3>Fisherman Sandals</h3>
+                            <div class="price-section">
+                                <span class="current-price">$69</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="34">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 5 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Leather Flip Flops">
+                        <div class="product-info">
+                            <h3>Leather Flip Flops</h3>
+                            <div class="price-section">
+                                <span class="current-price">$39</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="35">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 6 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Adventure Sandals">
+                        <div class="product-info">
+                            <h3>Adventure Sandals</h3>
+                            <div class="price-section">
+                                <span class="current-price">$89</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="36">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 7 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Casual Slides">
+                        <div class="product-info">
+                            <h3>Casual Slides</h3>
+                            <div class="price-section">
+                                <span class="current-price">$45</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="37">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 8 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Premium Leather Sandals">
+                        <div class="product-info">
+                            <h3>Premium Leather Sandals</h3>
+                            <div class="price-section">
+                                <span class="current-price">$99</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="38">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 9 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Outdoor Sandals">
+                        <div class="product-info">
+                            <h3>Outdoor Sandals</h3>
+                            <div class="price-section">
+                                <span class="current-price">$79</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="39">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 10 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1463100099107-aa0980c362e6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Summer Slides">
+                        <div class="product-info">
+                            <h3>Summer Slides</h3>
+                            <div class="price-section">
+                                <span class="current-price">$55</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="40">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Formal Shoes</h2>
+                <div class="product-grid" id="formal">
+                    <!-- Product 1 -->
+                    <div class="product-card">
+                        <img class="product-image" src="PRODUCTS/MP/MP3.webp">
+                        <div class="product-info">
+                            <h3>Oxford Dress Shoes</h3>
+                            <div class="price-section">
+                                <span class="current-price">$229</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="41">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1595341888016-a392ef81b7de?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Cap Toe Derby">
+                        <div class="product-info">
+                            <h3>Cap Toe Derby</h3>
+                            <div class="price-section">
+                                <span class="current-price">$199</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="42">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1463100099107-aa0980c362e6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Wingtip Brogues">
+                        <div class="product-info">
+                            <h3>Wingtip Brogues</h3>
+                            <div class="price-section">
+                                <span class="current-price">$249</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="43">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Classic Oxfords">
+                        <div class="product-info">
+                            <h3>Classic Oxfords</h3>
+                            <div class="price-section">
+                                <span class="current-price">$219</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="44">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 5 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Leather Monk Straps">
+                        <div class="product-info">
+                            <h3>Leather Monk Straps</h3>
+                            <div class="price-section">
+                                <span class="current-price">$239</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="45">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 6 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Patent Leather Shoes">
+                        <div class="product-info">
+                            <h3>Patent Leather Shoes</h3>
+                            <div class="price-section">
+                                <span class="current-price">$259</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="46">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 7 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Tassel Loafers">
+                        <div class="product-info">
+                            <h3>Tassel Loafers</h3>
+                            <div class="price-section">
+                                <span class="current-price">$189</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="47">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 8 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Double Monk Straps">
+                        <div class="product-info">
+                            <h3>Double Monk Straps</h3>
+                            <div class="price-section">
+                                <span class="current-price">$269</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="48">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 9 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Classic Brogues">
+                        <div class="product-info">
+                            <h3>Classic Brogues</h3>
+                            <div class="price-section">
+                                <span class="current-price">$209</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="49">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                    
+                    <!-- Product 10 -->
+                    <div class="product-card">
+                        <img class="product-image" src="https://images.unsplash.com/photo-1463100099107-aa0980c362e6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Formal Slip-Ons">
+                        <div class="product-info">
+                            <h3>Formal Slip-Ons</h3>
+                            <div class="price-section">
+                                <span class="current-price">$179</span>
+                            </div>
+                            <div class="product-meta">
+                            </div>
+                        </div>
+                        <button class="add-to-cart" data-id="50">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </section>
     </div>
-  </section>
+
+    <!-- FOOTER SECTION START -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- Footer Top Section -->
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">SHO<span>EVO</span></a>
+                    <p class="footer-tagline">Step into luxury with our premium footwear collection</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="links-column">
+                        <h3 class="links-title">Shop</h3>
+                        <ul>
+                            <li><a href="#">Men's Collection</a></li>
+                            <li><a href="#">Women's Collection</a></li>
+                            <li><a href="#">Kids' Collection</a></li>
+                            <li><a href="#">New Arrivals</a></li>
+                            <li><a href="#">Best Sellers</a></li>
+                            <li><a href="#">Sale Items</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="links-column">
+                        <h3 class="links-title">About us</h3>
+                        <ul>
+                            <li><a href="#">Our Story</a></li>
+                            <li><a href="#">Returns & Exchanges</a></li>
+                            <li><a href="#">Shipping Info</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="links-column">
+                        <h3 class="links-title">Newsletter</h3>
+                        <p>Subscribe for updates and exclusive offers</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email address" required>
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom Section -->
+            <div class="footer-bottom">
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa" title="Visa"></i>
+                    <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                    <i class="fab fa-cc-amex" title="American Express"></i>
+                    <i class="fab fa-cc-paypal" title="PayPal"></i>
+                    <i class="fab fa-cc-apple-pay" title="Apple Pay"></i>
+                </div>
+                
+                <div class="copyright">
+                    <p>&copy; 2025 SHOEVO. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+<!-- FOOTER SECTION END -->
+
+   <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    menuToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        this.innerHTML = navLinks.classList.contains('active') ? 
+            '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Dropdown functionality for mobile
+    document.querySelectorAll('.dropdown > a').forEach(dropdown => {
+        dropdown.addEventListener('click', function(e) {
+            if (window.innerWidth <= 992) {
+                e.preventDefault();
+                const dropdownContent = this.nextElementSibling;
+                const parent = this.parentElement;
+                
+                // Close other open dropdowns
+                document.querySelectorAll('.dropdown').forEach(item => {
+                    if (item !== parent) {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current dropdown
+                parent.classList.toggle('active');
+            }
+        });
+    });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.dropdown') && window.innerWidth <= 992) {
+            document.querySelectorAll('.dropdown').forEach(item => {
+                item.classList.remove('active');
+            });
+        }
+    });
+    
+    // Add to cart functionality
+    let cart = [];
+    
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.add-to-cart')) {
+            const button = e.target.closest('.add-to-cart');
+            const productId = parseInt(button.getAttribute('data-id'));
+            const productName = button.closest('.product-card').querySelector('h3').textContent;
+            
+            addToCart(productId);
+            updateCartCount();
+            showAddToCartNotification(productName);
+        }
+    });
+    
+    function addToCart(productId) {
+        const existingItem = cart.find(item => item.id === productId);
+        
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({
+                id: productId,
+                quantity: 1
+            });
+        }
+        
+        // Save to localStorage
+        localStorage.setItem('shoevoCart', JSON.stringify(cart));
+    }
+    
+    function updateCartCount() {
+        const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+        const cartCountElements = document.querySelectorAll('.cart-count');
+        
+        cartCountElements.forEach(element => {
+            element.textContent = totalItems;
+            element.style.display = totalItems > 0 ? 'flex' : 'none';
+        });
+    }
+    
+    function showAddToCartNotification(productName) {
+        const notification = document.createElement('div');
+        notification.className = 'add-to-cart-notification';
+        notification.innerHTML = `
+            <i class="fas fa-check-circle"></i>
+            <span>${productName} added to cart</span>
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Show notification
+        setTimeout(() => {
+            notification.classList.add('show');
+        }, 10);
+        
+        // Hide after 3 seconds
+        setTimeout(() => {
+            notification.classList.remove('show');
+            
+            // Remove after animation
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        }, 3000);
+    }
+    
+    // Load cart from localStorage
+    function loadCart() {
+        const savedCart = localStorage.getItem('shoevoCart');
+        if (savedCart) {
+            cart = JSON.parse(savedCart);
+            updateCartCount();
+        }
+    }
+    
+    // Initialize cart
+    loadCart();
+
+    // Filter functionality
+    const categoryFilter = document.getElementById('categoryFilter');
+    const priceFrom = document.getElementById('priceFrom');
+    const priceTo = document.getElementById('priceTo');
+    const searchInputMain = document.getElementById('searchInputMain');
+    
+    // Set default price values
+    priceFrom.value = '0';
+    priceTo.value = '500';
+    
+    // Add event listeners
+    categoryFilter.addEventListener('change', filterProducts);
+    priceFrom.addEventListener('input', filterProducts);
+    priceTo.addEventListener('input', filterProducts);
+    searchInputMain.addEventListener('input', filterProducts);
+    
+    function filterProducts() {
+        const selectedCategory = categoryFilter.value;
+        const minPrice = parseInt(priceFrom.value) || 0;
+        const maxPrice = parseInt(priceTo.value) || 500;
+        const searchTerm = searchInputMain.value.toLowerCase();
+        
+        // Get all product cards
+        const productCards = document.querySelectorAll('.product-card');
+        
+        productCards.forEach(card => {
+            const category = card.closest('.product-grid').id;
+            const price = parseInt(card.querySelector('.current-price').textContent.replace('$', ''));
+            const name = card.querySelector('h3').textContent.toLowerCase();
+            
+            const categoryMatch = selectedCategory === 'all' || category === selectedCategory;
+            const priceMatch = price >= minPrice && price <= maxPrice;
+            const searchMatch = name.includes(searchTerm);
+            
+            if (categoryMatch && priceMatch && searchMatch) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        // Hide empty sections
+        document.querySelectorAll('.product-grid').forEach(section => {
+            const visibleCards = section.querySelectorAll('.product-card[style="display: flex;"]').length;
+            const sectionContainer = section.closest('section');
+            
+            if (visibleCards === 0) {
+                sectionContainer.style.display = 'none';
+            } else {
+                sectionContainer.style.display = 'block';
+                // Update the section title to show count
+                const titleElement = sectionContainer.querySelector('.section-title');
+                titleElement.textContent = `${titleElement.textContent.split(' (')[0]} (${visibleCards})`;
+            }
+        });
+    }
+</script>
 </body>
 </html>
